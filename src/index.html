@@ -10,4 +10,14 @@
     <section id="drop-zone">+</section>
     <button id="go-button">Go</button>
   </body>
+  <script>
+    const { ipcRenderer } = require("electron");
+    // Get the upload button
+    const uploadButton = document.getElementById("drop-zone");
+    // Listen to 'click' event
+    uploadButton.addEventListener("click", () => {
+      // Send the data to the main process
+      ipcRenderer.sendSync("invokeAction", "Data");
+    });
+  </script>
 </html>

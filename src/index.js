@@ -1,4 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
+// Dialog handler
+const { selectFile } = require("./lib/file-selection");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -57,3 +59,11 @@ app.on("activate", () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+// Listen to ipc.send in index.html
+ipcMain.on("invokeAction", (event, data) => {
+  //Start dialog handler
+  const result = selectFile(event, data, mainWindow);
+  // Send the result to ipc.renderer in index.html
+  event.returnValue = result;
+});
