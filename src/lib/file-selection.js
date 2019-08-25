@@ -3,7 +3,7 @@ const { dialog } = require("electron");
 /**
  * Open a dialog to handle file uploading
  */
-const selectFile = (event, data, mainWindow) => {
+const selectFile = mainWindow => {
   let selectedFile = [];
   try {
     // Open the dialog
