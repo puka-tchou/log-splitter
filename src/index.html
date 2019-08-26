@@ -8,6 +8,7 @@
   <body>
     <h1>Déposez le fichier à séparer</h1>
     <section id="drop-zone">+</section>
+    <div id="progress-board"></div>
     <button
       id="go-button"
       disabled
@@ -21,7 +22,10 @@
 
     const uploadButton = document.getElementById("drop-zone");
     const goButton = document.getElementById("go-button");
+    const progressBoard = document.getElementById("progress-board");
+
     let processState = false;
+
     // Listen to "click" event on uploadButton
     uploadButton.addEventListener("click", () => {
       // Send the data to the main process
@@ -35,6 +39,10 @@
           ipcRenderer.sendSync("save-file", event);
         });
       }
+    });
+
+    ipcRenderer.on("progressUpdate", (event, message) => {
+      progressBoard.innerText = message;
     });
   </script>
 </html>

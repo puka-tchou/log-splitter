@@ -35,10 +35,28 @@ button {
 }
 
 #go-button {
+  transition: all 0.2s ease-in-out;
   min-width: 25%;
   line-height: 2em;
   background-color: #1d9a00;
   text-transform: uppercase;
   font-weight: bold;
   color: #fff;
+}
+
+#go-button:active {
+  transition: all 0.2s ease-in-out;
+  transform: translateY(2px);
+}
+
+#go-button:disabled {
+  background-color: #a3a3a3;
+}
+
+#go-button:disabled:active {
+  transform: none;
+}
+
+#progress-board {
+  text-align: center;
 }
