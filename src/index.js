@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 
 const { selectFile } = require("./lib/select-file"); // Dialog handler
 const { parseFile } = require("./lib/parse-file"); // File parser
+const { splitFile } = require("./lib/split-file"); // File splitter
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -64,6 +65,12 @@ ipcMain.on("invokeAction", (event, data) => {
   const selectedFile = selectFile(mainWindow);
   // Parse the file
   const file = parseFile(selectedFile[0]);
+  // Display the number of lines
+  console.debug(`Recherche de correspondance dans ${file.length} lignes...`);
+  // Split the file
+  const files = splitFile(file);
+  // Display the number of matches
+  console.debug(`${files.length} correspondances trouvées`);
   // Send the result to ipc.renderer in index.html
   event.returnValue = true;
 });
