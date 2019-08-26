@@ -17,7 +17,7 @@
     // Listen to 'click' event
     uploadButton.addEventListener("click", () => {
       // Send the data to the main process
-      ipcRenderer.sendSync("invokeAction", "Data");
+      ipcRenderer.sendSync("choose-file", "Data");
     });
   </script>
 </html>

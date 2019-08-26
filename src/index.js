@@ -60,7 +60,7 @@ app.on("activate", () => {
 });
 
 // Listen to ipc.send in index.html
-ipcMain.on("invokeAction", (event, data) => {
+ipcMain.on("choose-file", (event, data) => {
   // Start dialog handler
   const selectedFile = modalDialog(mainWindow, "open");
   // Parse the file
