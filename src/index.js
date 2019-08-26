@@ -63,6 +63,8 @@ app.on("activate", () => {
 ipcMain.on("choose-file", (event, data) => {
   // Start dialog handler
   const selectedFile = modalDialog(mainWindow, "open");
+  // Display the file being processed
+  console.debug(selectedFile[0]);
   // Parse the file
   const file = parseFile(selectedFile[0]);
   // Display the number of lines
