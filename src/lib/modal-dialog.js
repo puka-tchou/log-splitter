@@ -18,8 +18,9 @@ const modalDialog = (window, type) => {
         });
         break;
       case "save":
-        selectedFile = dialog.showSaveDialogSync(window, {
-          title: "Choisir le dossier dans lequel écrire les fichiers"
+        selectedFile = dialog.showOpenDialogSync(window, {
+          title: "Choisir le dossier dans lequel écrire les fichiers",
+          properties: ["openDirectory"]
         });
       default:
         throw `${type} is not a valid type of dialog`;
