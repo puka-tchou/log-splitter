@@ -19,4 +19,5 @@ const parseFile = rawPath => {
   }
   return fileByLine;
 };
-module.exports = { parseFile: parseFile };
+
+exports.parseFile = parseFile;

@@ -26,4 +26,4 @@ const splitFile = file => {
   return files;
 };
 
-module.exports = { splitFile: splitFile };
+exports.splitFile = splitFile;

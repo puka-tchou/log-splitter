@@ -2,7 +2,7 @@ const { dialog } = require("electron");
 
 /**
  * Open a modal dialog to select a file
- * @param {BrowserWindow} window The window to attach the dialog to
+ * @param {Electron.BrowserWindow} window The window to attach the dialog to
  * @param {String} type The type of dialog, either "open" or "save"
  * @returns {Array} An array containing the path to the file
  */
@@ -32,4 +32,4 @@ const modalDialog = (window, type) => {
   return path;
 };
 
-module.exports = { modalDialog: modalDialog };
+exports.modalDialog = modalDialog;

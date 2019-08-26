@@ -1,13 +1,16 @@
 const fs = require("fs");
 const path = require("path");
 
+const displayProgress = require("./display-progress");
+
 /**
  * Write an array of files to the disk
  * @param {String} name The name of the file
  * @param {String} folder The path to the folder
  * @param {Array} files The files
+ * @param {Electron.BrowserWindow} mainWindow The main renderer window
  */
-const writeFiles = (name, folder, files) => {
+const writeFiles = (name, folder, files, mainWindow) => {
   let index = 1;
   try {
     files.forEach(file => {
@@ -21,7 +24,7 @@ const writeFiles = (name, folder, files) => {
       });
       // Close the stream
       stream.end();
-      console.debug(`${index - 1}/${files.length} : ${fileName}`);
+      displayProgress(mainWindow, `${index - 1}/${files.length} : ${fileName}`);
     });
   } catch (error) {
     return error;
@@ -29,4 +32,4 @@ const writeFiles = (name, folder, files) => {
   return true;
 };
 
-module.exports = { writeFiles: writeFiles };
+exports.writeFiles = writeFiles;
