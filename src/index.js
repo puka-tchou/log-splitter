@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 
-const { selectFile } = require("./lib/select-file"); // Dialog handler
+const { modalDialog } = require("./lib/modal-dialog"); // Dialog handler
 const { parseFile } = require("./lib/parse-file"); // File parser
 const { splitFile } = require("./lib/split-file"); // File splitter
 
@@ -62,7 +62,7 @@ app.on("activate", () => {
 // Listen to ipc.send in index.html
 ipcMain.on("invokeAction", (event, data) => {
   // Start dialog handler
-  const selectedFile = selectFile(mainWindow);
+  const selectedFile = modalDialog(mainWindow, "open");
   // Parse the file
   const file = parseFile(selectedFile[0]);
   // Display the number of lines
