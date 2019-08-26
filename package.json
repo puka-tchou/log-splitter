@@ -1,6 +1,6 @@
 {
-  "name": "log-splitter-starter",
-  "productName": "log-splitter-starter",
+  "name": "log-splitter",
+  "productName": "log-splitter",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/index.js",
@@ -24,7 +24,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "log_splitter_starter"
+            "name": "log_splitter"
           }
         },
         {
