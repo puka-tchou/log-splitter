@@ -1,6 +1,12 @@
 const fs = require("fs");
 const path = require("path");
 
+/**
+ * Write an array of files to the disk
+ * @param {String} name The name of the file
+ * @param {String} folder The path to the folder
+ * @param {Array} files The files
+ */
 const writeFiles = (name, folder, files) => {
   let index = 0;
 
