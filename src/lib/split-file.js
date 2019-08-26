@@ -4,28 +4,25 @@
  * @returns {Array} An array of array
  */
 const splitFile = file => {
-  let originalFile = file;
-  // Define regular expression
   const regex = /(?:^|\W)ffmpeg init(?:$|\W)/gm;
-  // Define an empty array to store the chunks of text
   const files = [];
-  // Define startIndex at 0
-  let startIndex = 0,
-    endIndex = 0;
+
+  let processedFile = file;
+  let endIndex = 0;
   do {
     // Find the endIndex (the line where "ffmpeg init" is written)
-    endIndex = originalFile.findIndex((line, startIndex) => {
+    endIndex = processedFile.findIndex(line => {
       return regex.test(line);
     });
     // Slice the original array from start (included) to end (not included)
     // and store it
-    files.push(originalFile.slice(startIndex, endIndex));
-    // Switch start to end
-    startIndex = endIndex;
-    // Replace the original content with the remaining
-    originalFile = originalFile.slice(startIndex);
+    files.push(processedFile.slice(0, endIndex));
+    // Remove the content
+    processedFile.splice(0, endIndex);
     // Repeat
   } while (endIndex !== -1);
+  // Remove the first empty element
+  files.shift();
   return files;
 };
 
