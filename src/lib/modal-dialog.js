@@ -7,28 +7,29 @@ const { dialog } = require("electron");
  * @returns {Array} An array containing the path to the file
  */
 const modalDialog = (window, type) => {
-  let selectedFile = [];
+  let path = [];
   try {
     // Open the dialog
     switch (type) {
       case "open":
-        selectedFile = dialog.showOpenDialogSync(window, {
+        path = dialog.showOpenDialogSync(window, {
           title: "Ouvrir le fichier à traiter",
           properties: ["openFile"]
         });
         break;
       case "save":
-        selectedFile = dialog.showOpenDialogSync(window, {
+        path = dialog.showOpenDialogSync(window, {
           title: "Choisir le dossier dans lequel écrire les fichiers",
           properties: ["openDirectory"]
         });
+        break;
       default:
         throw `${type} is not a valid type of dialog`;
     }
   } catch (error) {
     return error;
   }
-  return selectedFile;
+  return path;
 };
 
 module.exports = { modalDialog: modalDialog };

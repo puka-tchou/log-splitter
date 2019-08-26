@@ -59,18 +59,22 @@ app.on("activate", () => {
   }
 });
 
+const main = mainWindow => {
+  let selectedFile = [],
+    files = [];
+
 // Listen to ipc.send in index.html
 ipcMain.on("choose-file", (event, data) => {
   // Start dialog handler
-  const selectedFile = modalDialog(mainWindow, "open");
+    selectedFile = modalDialog(mainWindow, "open");
   // Display the file being processed
   console.debug(selectedFile[0]);
   // Parse the file
-  const file = parseFile(selectedFile[0]);
+    const rawFile = parseFile(selectedFile[0]);
   // Display the number of lines
-  console.debug(`Recherche de correspondance dans ${file.length} lignes...`);
+    console.debug(`Recherche de correspondance dans ${files.length} lignes...`);
   // Split the file
-  const files = splitFile(file);
+    files = splitFile(rawFile);
   // Display the number of matches
   console.debug(`${files.length} correspondances trouvées`);
   // Send the result to ipc.renderer in index.html
@@ -79,7 +83,12 @@ ipcMain.on("choose-file", (event, data) => {
 
 ipcMain.on("save-file", (event, data) => {
   // Ask where to save the files
-  const savePath = modalDialog(mainWindow, "save");
+    const folder = modalDialog(mainWindow, "save");
+    // Display the progress
+    console.debug(`Writing ${files.length} files to ${folder[0]}`);
   // Write the files to the disk
   event.returnValue = true;
 });
+};
+
+main(mainWindow);
