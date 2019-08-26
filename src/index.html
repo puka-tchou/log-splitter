@@ -8,16 +8,33 @@
   <body>
     <h1>Déposez le fichier à séparer</h1>
     <section id="drop-zone">+</section>
-    <button id="go-button">Go</button>
+    <button
+      id="go-button"
+      disabled
+      title="Choisissez un fichier à traiter d'abord"
+    >
+      Go
+    </button>
   </body>
   <script>
     const { ipcRenderer } = require("electron");
-    // Get the upload button
+
     const uploadButton = document.getElementById("drop-zone");
-    // Listen to 'click' event
+    const goButton = document.getElementById("go-button");
+    let processState = false;
+    // Listen to "click" event on uploadButton
     uploadButton.addEventListener("click", () => {
       // Send the data to the main process
-      ipcRenderer.sendSync("choose-file", "Data");
+      processState = ipcRenderer.sendSync("choose-file", event);
+      if (processState === true) {
+        goButton.removeAttribute("disabled");
+        goButton.setAttribute("title", "C'est parti !");
+        // Listen to "click" event on goButton
+        goButton.addEventListener("click", () => {
+          // Send the data to the main process
+          ipcRenderer.sendSync("save-file", event);
+        });
+      }
     });
   </script>
 </html>

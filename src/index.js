@@ -76,3 +76,10 @@ ipcMain.on("choose-file", (event, data) => {
   // Send the result to ipc.renderer in index.html
   event.returnValue = true;
 });
+
+ipcMain.on("save-file", (event, data) => {
+  // Ask where to save the files
+  const savePath = modalDialog(mainWindow, "save");
+  // Write the files to the disk
+  event.returnValue = true;
+});
