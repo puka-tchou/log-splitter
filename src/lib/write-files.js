@@ -8,12 +8,11 @@ const path = require("path");
  * @param {Array} files The files
  */
 const writeFiles = (name, folder, files) => {
-  let index = 0;
+  let index = 1;
   try {
     files.forEach(file => {
       let fileName = path.join(folder, `${name}_${index.toString()}.log`);
       index++;
-      console.debug(`Writing ${fileName}`);
       // Open a stream
       const stream = fs.createWriteStream(fileName, { flags: "a" });
       // Append to the file
@@ -22,6 +21,7 @@ const writeFiles = (name, folder, files) => {
       });
       // Close the stream
       stream.end();
+      console.debug(`${index - 1}/${files.length} : ${fileName}`);
     });
   } catch (error) {
     return error;

@@ -87,7 +87,9 @@ const main = mainWindow => {
     // Ask where to save the files
     const folder = modalDialog(mainWindow, "save");
     // Display the progress
-    console.debug(`Writing ${files.length} files to ${folder[0]}`);
+    console.debug(
+      `Enregistrement de ${files.length} fichiers vers ${folder[0]}`
+    );
     // Write the files to the disk
     writeFiles(path.parse(selectedFile[0]).name, folder[0], files);
     event.returnValue = true;
