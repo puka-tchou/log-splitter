@@ -1,3 +1,8 @@
+/**
+ * Split the files in chunks
+ * @param {Array} file An array containing each line of the original file
+ * @returns {Array} An array of array
+ */
 const splitFile = file => {
   let originalFile = file;
   // Define regular expression
