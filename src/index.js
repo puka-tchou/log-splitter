@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 
-const { selectFile } = require("./lib/file-selection"); // Dialog handler
-const { parseFile } = require("./lib/split-file"); // File parser
+const { selectFile } = require("./lib/select-file"); // Dialog handler
+const { parseFile } = require("./lib/parse-file"); // File parser
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -63,7 +63,7 @@ ipcMain.on("invokeAction", (event, data) => {
   // Start dialog handler
   const selectedFile = selectFile(mainWindow);
   // Parse the file
-  parseFile(selectedFile[0]);
+  const file = parseFile(selectedFile[0]);
   // Send the result to ipc.renderer in index.html
   event.returnValue = true;
 });
