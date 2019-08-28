@@ -17,7 +17,9 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    webPreferences: { nodeIntegration: true }
+    useContentSize: true,
+    webPreferences: { nodeIntegration: true },
+    autoHideMenuBar: true
   });
 
   // and load the index.html of the app.
