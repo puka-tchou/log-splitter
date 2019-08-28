@@ -46,7 +46,7 @@
     }
   },
   "dependencies": {
-    "electron": "^6.0.4",
+    
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
@@ -55,6 +55,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.44",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.44",
     "@electron-forge/maker-zip": "^6.0.0-beta.44",
+    "electron": "^6.0.4",
     "conventional-changelog-cli": "^2.0.23",
     "eslint": "^6.2.2",
     "eslint-config-airbnb-base": "^14.0.0",
