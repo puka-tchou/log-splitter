@@ -18,43 +18,5 @@
       Go
     </button>
   </body>
-  <script>
-    const { ipcRenderer } = require("electron");
-
-    const uploadButton = document.getElementById("drop-zone");
-    const selectFolderButton = document.getElementById("select-folder");
-    const goButton = document.getElementById("go-button");
-    const progressBoard = document.getElementById("progress-board");
-
-    let fileChosen = false;
-    let folderChosen = false;
-
-    const activateStartButton = () => {
-      if (fileChosen === true && folderChosen === true) {
-        goButton.removeAttribute("disabled");
-        goButton.setAttribute("title", "C'est parti !");
-        // Listen to "click" event on goButton
-        goButton.addEventListener("click", () => {
-          // Send the data to the main process
-          ipcRenderer.sendSync("save-file", event);
-        });
-      }
-    };
-
-    // Listen to "click" event on uploadButton
-    uploadButton.addEventListener("click", () => {
-      // Send the data to the main process
-      fileChosen = ipcRenderer.sendSync("choose-file", event);
-      activateStartButton();
-    });
-
-    selectFolderButton.addEventListener("click", () => {
-      folderChosen = ipcRenderer.sendSync("choose-folder", event);
-      activateStartButton();
-    });
-
-    ipcRenderer.on("progressUpdate", (event, message) => {
-      progressBoard.innerText = message;
-    });
-  </script>
+  <script src="./lib/renderer.js"></script>
 </html>
