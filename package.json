@@ -11,7 +11,7 @@
   "main": "src/index.js",
   "scripts": {
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "lint": "echo \"No linting configured\"",
+    "lint": "eslint src/**/*.js --fix",
     "make": "electron-forge make",
     "package": "electron-forge package",
     "publish": "electron-forge publish",
@@ -46,6 +46,7 @@
     }
   },
   "dependencies": {
+    "electron": "^6.0.4",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
@@ -55,7 +56,12 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.44",
     "@electron-forge/maker-zip": "^6.0.0-beta.44",
     "conventional-changelog-cli": "^2.0.23",
-    "electron": "^6.0.4",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2",
     "standard-version": "^7.0.0"
   },
   "productName": "log-splitter"
