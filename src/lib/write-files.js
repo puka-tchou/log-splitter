@@ -12,23 +12,20 @@ const displayProgress = require("./display-progress");
  */
 const writeFiles = (name, folder, files, mainWindow) => {
   let index = 1;
-  try {
-    files.forEach(file => {
-      let fileName = path.join(folder, `${name}_${index.toString()}.log`);
-      index++;
-      // Open a stream
-      const stream = fs.createWriteStream(fileName, { flags: "a" });
-      // Append to the file
-      file.forEach(line => {
-        stream.write(`${line}\n`);
-      });
-      // Close the stream
-      stream.end();
-      displayProgress(mainWindow, `${index - 1}/${files.length} : ${fileName}`);
+
+  files.forEach(file => {
+    let fileName = path.join(folder, `${name}_${index.toString()}.log`);
+    index++;
+    // Open a stream
+    const stream = fs.createWriteStream(fileName, { flags: "a" });
+    // Append to the file
+    file.forEach(line => {
+      stream.write(`${line}\n`);
     });
-  } catch (error) {
-    return error;
-  }
+    // Close the stream
+    stream.end();
+  });
+
   return true;
 };
 
