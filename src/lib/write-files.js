@@ -12,7 +12,7 @@ const writeFiles = (name, folder, files) => {
   let index = 1;
 
   files.forEach(file => {
-    const fileName = path.join(folder, `${name}_${index.toString()}.log`);
+    const fileName = path.join(folder, `${name}_${index.toString()}`);
     // eslint-disable-next-line no-plusplus
     index++;
     // Open a stream
