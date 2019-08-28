@@ -1,23 +1,23 @@
 {
   "name": "log-splitter",
-  "productName": "log-splitter",
-  "version": "1.1.0",
-  "description": "",
-  "main": "src/index.js",
-  "scripts": {
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
-  },
+  "version": "1.1.1",
+  "description": "Split logs",
   "keywords": [],
+  "license": "MIT",
   "author": {
     "name": "Gaspard Bariller",
     "email": "gaspard.bariller@tutanota.com"
   },
-  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "lint": "echo \"No linting configured\"",
+    "make": "electron-forge make",
+    "package": "electron-forge package",
+    "publish": "electron-forge publish",
+    "release": "standard-version",
+    "start": "electron-forge start"
+  },
   "config": {
     "forge": {
       "packagerConfig": {},
@@ -55,6 +55,8 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.44",
     "@electron-forge/maker-zip": "^6.0.0-beta.44",
     "conventional-changelog-cli": "^2.0.23",
-    "electron": "^6.0.4"
-  }
+    "electron": "^6.0.4",
+    "standard-version": "^7.0.0"
+  },
+  "productName": "log-splitter"
 }
