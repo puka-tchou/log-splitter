@@ -24,7 +24,7 @@ const modalDialog = (window, type) => {
         });
         break;
       default:
-        throw `${type} is not a valid type of dialog`;
+        throw new Error(`${type} is not a valid type of dialog`);
     }
   } catch (error) {
     return error;

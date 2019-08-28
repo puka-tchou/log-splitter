@@ -7,7 +7,7 @@ const splitFile = file => {
   const regex = /(?:^|\W)ffmpeg init(?:$|\W)/gm;
   const files = [];
 
-  let processedFile = file;
+  const processedFile = file;
   let endIndex = 0;
   do {
     // Find the endIndex (the line where "ffmpeg init" is written)

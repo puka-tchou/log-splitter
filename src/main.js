@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const { ipcMain } = require("electron");
 const path = require("path");
 
@@ -17,7 +18,7 @@ const main = mainWindow => {
   let folder;
 
   // Listen to ipc.send in index.html
-  ipcMain.on("choose-file", (event, data) => {
+  ipcMain.on("choose-file", event => {
     // Start dialog handler
     selectedFile = modalDialog(mainWindow, "open");
     if (typeof selectedFile !== "undefined") {
@@ -39,14 +40,14 @@ const main = mainWindow => {
     event.returnValue = true;
   });
 
-  ipcMain.on("choose-folder", (event, data) => {
+  ipcMain.on("choose-folder", event => {
     // Ask where to save the files
     folder = modalDialog(mainWindow, "save");
     displayProgress(mainWindow, folder);
     event.returnValue = true;
   });
 
-  ipcMain.on("save-file", (event, data) => {
+  ipcMain.on("save-file", event => {
     if (typeof folder !== "undefined") {
       // Display the progress
       displayProgress(

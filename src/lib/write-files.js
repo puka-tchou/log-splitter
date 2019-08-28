@@ -1,8 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-const displayProgress = require("./display-progress");
-
 /**
  * Write an array of files to the disk
  * @param {String} name The name of the file
@@ -10,11 +8,12 @@ const displayProgress = require("./display-progress");
  * @param {Array} files The files
  * @param {Electron.BrowserWindow} mainWindow The main renderer window
  */
-const writeFiles = (name, folder, files, mainWindow) => {
+const writeFiles = (name, folder, files) => {
   let index = 1;
 
   files.forEach(file => {
-    let fileName = path.join(folder, `${name}_${index.toString()}.log`);
+    const fileName = path.join(folder, `${name}_${index.toString()}.log`);
+    // eslint-disable-next-line no-plusplus
     index++;
     // Open a stream
     const stream = fs.createWriteStream(fileName, { flags: "a" });
