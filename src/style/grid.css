@@ -1,0 +1,58 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "top top top top top" "info-display info-display info-display info-display info-display" "bottom bottom bottom bottom bottom";
+}
+
+.bottom {
+  grid-area: bottom;
+}
+
+.info-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "file separator-one folder separator-two progress";
+  grid-area: info-display;
+}
+
+.file {
+  grid-area: file;
+}
+
+.folder {
+  grid-area: folder;
+}
+
+.progress {
+  grid-area: progress;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "button-file line-one button-folder line-two button-progress";
+  grid-area: top;
+}
+
+.button {
+  grid-area: button;
+}
+
+.line {
+  grid-area: line;
+}
+
+.button {
+  grid-area: button;
+}
+
+.line {
+  grid-area: line;
+}
+
+.button {
+  grid-area: button;
+}

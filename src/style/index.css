@@ -1,0 +1,74 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: auto;
+  padding: 2rem;
+  background-color: #3a3a3a;
+  color: #fff;
+  text-align: center;
+  min-width: 880px;
+}
+/*=== TOP ===*/
+/*== buttons ==*/
+.button-container {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  padding: 25px;
+  transition: all 0.2s;
+  border-radius: 50%;
+  background-color: aliceblue;
+}
+.button-container:hover {
+  transition: all 0.2s;
+  background-color: #fffa89;
+}
+.button-container.disabled {
+  background-color: #a3a3a3;
+}
+.button-container.disabled:active {
+  transform: none;
+}
+#go-button.enabled:hover {
+  transition: all 0.2s;
+  background-color: #38f06f;
+}
+#go-button.enabled:active {
+  transition: all 0.2s ease-in-out;
+  transform: scale(0.9);
+}
+/*== icons ==*/
+.icon {
+  width: 100%;
+  height: 100%;
+}
+#drop-zone .icon {
+  background: url(../static/icons/file.svg);
+}
+#select-folder .icon {
+  background: url(../static/icons/folder-2.svg);
+}
+#go-button .icon {
+  background: url(../static/icons/flash.svg);
+}
+/*== lines ==*/
+.line-container {
+  display: flex;
+  align-items: center;
+}
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+/*=== INFO-DISPLAY ===*/
+.info-display {
+  color: #2da8ff;
+}
+/*=== PROGRESS-BOARD ===*/
+.bottom {
+  background: #4f4f4f;
+  border-radius: 2px;
+  margin: 1rem;
+}

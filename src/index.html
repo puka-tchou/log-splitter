@@ -3,20 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <title>Log splitter</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="style/grid.css" />
+    <link rel="stylesheet" href="style/index.css" />
   </head>
   <body>
-    <h1>Déposez le fichier à séparer</h1>
-    <section id="drop-zone">+</section>
-    <div id="progress-board"></div>
-    <button id="select-folder">Choisir le dossier</button>
-    <button
-      id="go-button"
-      disabled
-      title="Choisissez un fichier à traiter d'abord"
-    >
-      Go
-    </button>
+    <div class="grid-container">
+      <div class="top">
+        <div class="button-file">
+          <div id="drop-zone" class="button-container">
+            <div class="icon"></div>
+          </div>
+        </div>
+        <div class="line-one line-container"><div class="line"></div></div>
+        <div class="button-folder">
+          <div id="select-folder" class="button-container">
+            <div class="icon"></div>
+          </div>
+        </div>
+        <div class="line-two line-container"><div class="line"></div></div>
+        <div class="button-progress">
+          <div id="go-button" class="button-container disabled">
+            <div class="icon"></div>
+          </div>
+        </div>
+      </div>
+      <div class="info-display">
+        <div class="file"><div id="display-file" class="info"></div></div>
+        <div class="separator-one"></div>
+        <div class="folder">
+          <div id="display-folder" class="info"></div>
+        </div>
+        <div class="separator-two"></div>
+        <div class="progress">
+          <div id="display-progress" class="info"></div>
+        </div>
+      </div>
+
+      <div class="bottom"><div id="progress-board"></div></div>
+    </div>
   </body>
   <script src="./lib/renderer.js"></script>
 </html>
