@@ -21,6 +21,13 @@ button {
   border-radius: 5px;
   padding: 0.5rem;
   margin: 1rem;
+  transition: all 0.2s ease-in-out;
+  min-width: 25%;
+  line-height: 2em;
+  background-color: #1d9a00;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
 }
 
 #drop-zone {
@@ -32,16 +39,6 @@ button {
   border: 3px dashed;
   text-align: center;
   line-height: 50vh;
-}
-
-#go-button {
-  transition: all 0.2s ease-in-out;
-  min-width: 25%;
-  line-height: 2em;
-  background-color: #1d9a00;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #fff;
 }
 
 #go-button:active {

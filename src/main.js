@@ -12,8 +12,9 @@ const { displayProgress } = require("./lib/display-progress");
  * @param {Electron.BrowserWindow} mainWindow
  */
 const main = mainWindow => {
-  let selectedFile = [],
-    files = [];
+  let selectedFile = [];
+  let files = [];
+  let folder;
 
   // Listen to ipc.send in index.html
   ipcMain.on("choose-file", (event, data) => {
@@ -38,9 +39,14 @@ const main = mainWindow => {
     event.returnValue = true;
   });
 
-  ipcMain.on("save-file", (event, data) => {
+  ipcMain.on("choose-folder", (event, data) => {
     // Ask where to save the files
-    const folder = modalDialog(mainWindow, "save");
+    folder = modalDialog(mainWindow, "save");
+    displayProgress(mainWindow, folder);
+    event.returnValue = true;
+  });
+
+  ipcMain.on("save-file", (event, data) => {
     if (typeof folder !== "undefined") {
       // Display the progress
       displayProgress(

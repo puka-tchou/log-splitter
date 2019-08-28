@@ -9,6 +9,7 @@
     <h1>Déposez le fichier à séparer</h1>
     <section id="drop-zone">+</section>
     <div id="progress-board"></div>
+    <button id="select-folder">Choisir le dossier</button>
     <button
       id="go-button"
       disabled
@@ -21,16 +22,15 @@
     const { ipcRenderer } = require("electron");
 
     const uploadButton = document.getElementById("drop-zone");
+    const selectFolderButton = document.getElementById("select-folder");
     const goButton = document.getElementById("go-button");
     const progressBoard = document.getElementById("progress-board");
 
-    let processState = false;
+    let fileChosen = false;
+    let folderChosen = false;
 
-    // Listen to "click" event on uploadButton
-    uploadButton.addEventListener("click", () => {
-      // Send the data to the main process
-      processState = ipcRenderer.sendSync("choose-file", event);
-      if (processState === true) {
+    const activateStartButton = () => {
+      if (fileChosen === true && folderChosen === true) {
         goButton.removeAttribute("disabled");
         goButton.setAttribute("title", "C'est parti !");
         // Listen to "click" event on goButton
@@ -39,6 +39,18 @@
           ipcRenderer.sendSync("save-file", event);
         });
       }
+    };
+
+    // Listen to "click" event on uploadButton
+    uploadButton.addEventListener("click", () => {
+      // Send the data to the main process
+      fileChosen = ipcRenderer.sendSync("choose-file", event);
+      activateStartButton();
+    });
+
+    selectFolderButton.addEventListener("click", () => {
+      folderChosen = ipcRenderer.sendSync("choose-folder", event);
+      activateStartButton();
     });
 
     ipcRenderer.on("progressUpdate", (event, message) => {
