@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/Gaspacchio/log-splitter/compare/v1.2.0...v2.0.0) (2019-09-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **UI:** User interface has been greatly improved, making it more usable, user-friendly and responsive.
+
+### Bug Fixes
+
+* **gitignore:** Ignore folders ([c8730e9](https://github.com/Gaspacchio/log-splitter/commit/c8730e9))
+
+
+### Features
+
+* **UI:** Remove cdns ([046cda5](https://github.com/Gaspacchio/log-splitter/commit/046cda5))
+* **UI:** User interface overhaul ([d8e3ebb](https://github.com/Gaspacchio/log-splitter/commit/d8e3ebb))
+
 ## 1.2.0 (2019-08-28)
 
 
