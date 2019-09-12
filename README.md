@@ -6,7 +6,7 @@ Log-splitter is a easy to use software developped specifically to split a single
 
 ## Usage
 
-You may download the installer from the release page: [latest version](https://github.com/Gaspacchio/log-splitter/releases).
+You may download the installer from the release page: [latest version](https://github.com/Gaspacchio/log-splitter/releases/latest).
 
 Then, just execute the installer and run log-splitter just as any other regular program.
 
