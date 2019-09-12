@@ -88,6 +88,9 @@ typings/
 # Electron-Forge
 out/
 
+# VS Code
 .vscode/
 
+# Custom
 examples/
+documentation/
