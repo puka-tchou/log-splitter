@@ -1,74 +1,132 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: auto;
-  padding: 2rem;
-  background-color: #3a3a3a;
-  color: #fff;
-  text-align: center;
-  min-width: 880px;
-}
-/*=== TOP ===*/
-/*== buttons ==*/
-.button-container {
-  width: 100px;
-  height: 100px;
-  margin: auto;
-  padding: 25px;
-  transition: all 0.2s;
-  border-radius: 50%;
-  background-color: aliceblue;
-}
-.button-container:hover {
-  transition: all 0.2s;
-  background-color: #fffa89;
-}
-.button-container.disabled {
-  background-color: #a3a3a3;
-}
-.button-container.disabled:active {
-  transform: none;
-}
-#go-button.enabled:hover {
-  transition: all 0.2s;
-  background-color: #38f06f;
-}
-#go-button.enabled:active {
-  transition: all 0.2s ease-in-out;
-  transform: scale(0.9);
-}
-/*== icons ==*/
-.icon {
-  width: 100%;
-  height: 100%;
-}
-#drop-zone .icon {
-  background: url(../static/icons/file.svg);
-}
-#select-folder .icon {
-  background: url(../static/icons/folder-2.svg);
-}
-#go-button .icon {
-  background: url(../static/icons/flash.svg);
-}
-/*== lines ==*/
-.line-container {
+/*=== CONTAINER ===*/
+.flex-container {
+  /* box */
   display: flex;
+  justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
-.line {
+/*=== CARDS ===*/
+.card {
+  /* box */
+  position: relative;
+  height: 460px;
+  width: 260px;
+  margin: 0 25px;
+  border-radius: 25px;
+  /* text */
+  font-family: "Miriam Libre", sans-serif;
+  /* decoration */
+  background-color: #a8a8a8;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px;
+}
+.card .corner-number {
+  /* box */
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  /* text */
+  text-align: center;
+  line-height: 50px;
+  color: #9b9b9b;
+  /* decoration */
+  background: #ffffff;
+}
+.card .text-background {
+  /* box */
+  max-width: 260px;
+  margin-top: 50px;
+  /* text */
+  color: #9b9b9b;
+  text-transform: uppercase;
+  font-size: 72px;
+  font-weight: bold;
+  word-break: break-all;
+}
+.card .text-background p {
+  /* box */
+  margin-block-start: auto;
+  margin-block-end: auto;
+}
+.card .button-container {
+  /* box */
+  position: absolute;
+  bottom: 25px;
+  width: 220px;
+  max-width: 95%;
+  border-radius: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* decoration */
+  background: #ffffff;
+}
+.card .button-container .button {
+  /* box */
   width: 100%;
-  height: 2px;
-  background-color: #fff;
-  border-radius: 2px;
+  border: none;
+  border-radius: 25px;
+  /* text */
+  font-size: 32px;
+  /* decoration */
+  background: #ffffff;
 }
-/*=== INFO-DISPLAY ===*/
-.info-display {
-  color: #2da8ff;
+.card .button-container .button[disabled] {
+  /* box */
+  border: solid 1px #707070;
+  /* decoration */
+  background: #a8a8a8;
+  /* text */
+  color: #9b9b9b;
 }
-/*=== PROGRESS-BOARD ===*/
-.bottom {
-  background: #4f4f4f;
-  border-radius: 2px;
-  margin: 1rem;
+.card .button-container .info p {
+  /* box */
+  padding: 10px;
+  /* text */
+  word-break: break-all;
+}
+/*=== VALID CARD ===*/
+.card.valid {
+  /* decoration */
+  background: #76ea76;
+}
+.card.valid .corner-number {
+  /* text */
+  color: #4ca14c;
+}
+.card.valid .text-background {
+  /* text */
+  color: #ffffff;
+}
+.card.valid .button-container .button {
+  /* box */
+  border-radius: 25px 25px 0 25px;
+  /* decoration */
+  background: #4ca14c;
+  /* text */
+  color: #ffffff;
+}
+/*=== START READY ===*/
+.card.ready {
+  /* decoration */
+  background: #ebeb49;
+}
+.card.ready .corner-number {
+  /* text */
+  color: #ebeb49;
+}
+.card.ready .text-background {
+  /* text */
+  color: #ffffff;
+}
+.card.ready .button-container .button {
+  /* box */
+  border-radius: 25px;
+  /* decoration */
+  background: #a1a14c;
+  /* text */
+  color: #ffffff;
 }

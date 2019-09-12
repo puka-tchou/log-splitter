@@ -3,43 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <title>Log splitter</title>
-    <link rel="stylesheet" href="style/grid.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Miriam+Libre&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style/index.css" />
   </head>
   <body>
-    <div class="grid-container">
-      <div class="top">
-        <div class="button-file">
-          <div id="drop-zone" class="button-container">
-            <div class="icon"></div>
-          </div>
+    <div class="flex-container">
+      <div id="file-card" class="card">
+        <div class="corner-number">1</div>
+        <div id="file-info-card" class="text-background">
+          <p>
+            This is the log
+          </p>
         </div>
-        <div class="line-one line-container"><div class="line"></div></div>
-        <div class="button-folder">
-          <div id="select-folder" class="button-container">
-            <div class="icon"></div>
-          </div>
-        </div>
-        <div class="line-two line-container"><div class="line"></div></div>
-        <div class="button-progress">
-          <div id="go-button" class="button-container disabled">
-            <div class="icon"></div>
-          </div>
+        <div class="button-container">
+          <button id="select-file" class="button">open</button>
+          <div id="file-info" class="info"></div>
         </div>
       </div>
-      <div class="info-display">
-        <div class="file"><div id="display-file" class="info"></div></div>
-        <div class="separator-one"></div>
-        <div class="folder">
-          <div id="display-folder" class="info"></div>
+      <div id="folder-card" class="card">
+        <div class="corner-number">2</div>
+        <div id="folder-info-card" class="text-background">
+          <p>
+            This is the destination
+          </p>
         </div>
-        <div class="separator-two"></div>
-        <div class="progress">
-          <div id="display-progress" class="info"></div>
+        <div class="button-container">
+          <button id="select-folder" class="button">open</button>
+          <div id="folder-info" class="info"></div>
         </div>
       </div>
-
-      <div class="bottom"><div id="progress-board"></div></div>
+      <div id="process-card" class="card start-step">
+        <div class="corner-number">3</div>
+        <div id="process-info-card" class="text-background">
+          <p>
+            Start Processing
+          </p>
+        </div>
+        <div class="button-container">
+          <button id="start-button" class="button" disabled>start</button>
+          <div id="process-info" class="info"></div>
+        </div>
+      </div>
     </div>
   </body>
   <script src="./lib/renderer.js"></script>

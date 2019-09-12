@@ -26,24 +26,21 @@ const main = mainWindow => {
       // Display the file being processed
       displayProgress(
         mainWindow,
-        "display-file",
-        path.parse(selectedFile[0]).base
+        "file-info",
+        // path.parse(selectedFile[0]).base
+        selectedFile[0]
       );
       // Parse the file
       const rawFile = parseFile(selectedFile[0]);
-      // Display the number of lines
-      displayProgress(
-        mainWindow,
-        "progress-board",
-        `Recherche de correspondance dans ${files.length} lignes...`
-      );
       // Split the file
       files = splitFile(rawFile);
+      // Display that the process went OK
+      displayProgress(mainWindow, "file-info-card", "Log is ok");
       // Display the number of matches
       displayProgress(
         mainWindow,
-        "progress-board",
-        `${files.length} correspondances trouvées`
+        "process-info",
+        `${files.length} correspondances trouvées dans ${files.length} lignes`
       );
       // Send the result to ipc.renderer in index.html
     }
@@ -53,7 +50,10 @@ const main = mainWindow => {
   ipcMain.on("choose-folder", event => {
     // Ask where to save the files
     folder = modalDialog(mainWindow, "save");
-    displayProgress(mainWindow, "display-folder", folder);
+    // Display that the folder is OK
+    displayProgress(mainWindow, "folder-info-card", "Folder is OK");
+    // Display the folder chosen
+    displayProgress(mainWindow, "folder-info", folder);
     event.returnValue = true;
   });
 
@@ -62,7 +62,7 @@ const main = mainWindow => {
       // Display the progress
       displayProgress(
         mainWindow,
-        "progress-board",
+        "process-info",
         `Enregistrement de ${files.length} fichiers vers ${folder[0]}`
       );
       // Write the files to the disk
@@ -72,13 +72,18 @@ const main = mainWindow => {
         files,
         mainWindow
       );
+      // Display the success
       displayProgress(
         mainWindow,
-        "progress-board",
+        "process-info",
         `${
           files.length
         } fichiers ont été enregistrés avec succès dans le dossier ${folder[0]}`
       );
+      // Indicate that the process is done
+      displayProgress(mainWindow, "process-info-card", "Processing is done");
+      // Change button message
+      displayProgress(mainWindow, "start-button", "restart");
     }
     event.returnValue = true;
   });
