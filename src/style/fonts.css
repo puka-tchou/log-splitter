@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Miriam Libre";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Miriam Libre Regular"), local("MiriamLibre-Regular"),
+    url(../static/font/MiriamLibre-Regular.ttf) format("ttf");
+}
