@@ -8,32 +8,11 @@ const fileCard = document.getElementById("file-card");
 const folderCard = document.getElementById("folder-card");
 const processCard = document.getElementById("process-card");
 
-let processStatus;
+let processStatus = "none";
 let file = false;
 let folder = false;
 
-const activateStartButton = () => {
-  // Reset state
-  processCard.classList.remove("ready", "valid");
-  if (file && folder) {
-    // Change state of the card to "ready"
-    processCard.classList.add("ready");
-    // Enable start button
-    startButton.disabled = false;
-    // Listen to "click" event on goButton
-    startButton.addEventListener("click", event => {
-      // Send the data to the main process
-      processStatus = ipcRenderer.sendSync("save-file", event);
-      if (processStatus) {
-        // Remove yellow
-        processCard.classList.remove("ready");
-        // Turn to green
-        processCard.classList.add("valid");
-      }
-    });
-  }
-};
-
+// Prints the provided message in the DOM
 const displayMessage = (target, message) => {
   const container = document.getElementById(target);
   // Check if the container is a button
@@ -54,7 +33,67 @@ const displayMessage = (target, message) => {
   }
 };
 
-// Listen to "click" on the file selection
+const resetState = () => {
+  // Reset gloabal variables
+  processStatus = "none";
+  file = false;
+  folder = false;
+  // Reset classes of HTML elements
+  fileCard.className = "card";
+  folderCard.className = "card";
+  processCard.className = "card start-step";
+  // Reset the text content
+  displayMessage("file-info-card", "This is the log");
+  displayMessage("folder-info-card", "This is the destination");
+  displayMessage("process-info-card", "Start Processing");
+  // Reset the buttons labels
+  displayMessage("select-file", "open");
+  displayMessage("select-folder", "open");
+  displayMessage("start-button", "start");
+  // Reset processus informations
+  displayMessage("file-info", "");
+  displayMessage("folder-info", "");
+  displayMessage("process-info", "");
+};
+
+const activateStartButton = () => {
+  // Reset state
+  processCard.classList.remove("ready", "valid");
+  if (file && folder) {
+    // Set the processing state to "ready"
+    processStatus = "ready";
+    // Change state of the card to "ready"
+    processCard.classList.add("ready");
+    // Enable start button
+    startButton.disabled = false;
+    // Listen to "click" event on goButton
+    startButton.addEventListener("click", event => {
+      console.log(processStatus);
+      switch (processStatus) {
+        case "ready":
+          // Wait for the main process to write the files
+          ipcRenderer.sendSync("save-file", event);
+          // Remove yellow
+          processCard.classList.remove("ready");
+          // Turn to green
+          processCard.classList.add("valid");
+          // Set the processStatus do "done"
+          processStatus = "done";
+          console.log(processStatus);
+          break;
+        case "done":
+          console.log("Should reset");
+          resetState();
+          break;
+        default:
+          console.log("Case not supported, this is probably an error");
+          break;
+      }
+    });
+  }
+};
+
+// Listen to "click" event on file selection
 selectFile.addEventListener("click", event => {
   // Reset state
   fileCard.classList.remove("valid");
@@ -70,6 +109,7 @@ selectFile.addEventListener("click", event => {
   }
 });
 
+// Listen to "click" event on folder selection
 selectFolder.addEventListener("click", event => {
   // Reset state
   folderCard.classList.remove("valid");
@@ -85,6 +125,7 @@ selectFolder.addEventListener("click", event => {
   }
 });
 
+// Calls the displayMessage each time the main process sends a message
 ipcRenderer.on("progressUpdate", (event, target, message) => {
   displayMessage(target, message);
 });

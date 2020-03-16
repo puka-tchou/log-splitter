@@ -31,9 +31,13 @@ const main = mainWindow => {
         selectedFile[0]
       );
       // Parse the file
+      console.time("parse");
       const rawFile = parseFile(selectedFile[0]);
+      console.timeEnd("parse");
       // Split the file
+      console.time("split");
       files = splitFile(rawFile);
+      console.timeEnd("split");
       // Display that the process went OK
       displayProgress(mainWindow, "file-info-card", "Log is ok");
       // Display the number of matches
@@ -66,12 +70,14 @@ const main = mainWindow => {
         `Enregistrement de ${files.length} fichiers vers ${folder[0]}`
       );
       // Write the files to the disk
+      console.time("write");
       writeFiles(
         path.parse(selectedFile[0]).name,
         folder[0],
         files,
         mainWindow
       );
+      console.timeEnd("write");
       // Display the success
       displayProgress(
         mainWindow,
