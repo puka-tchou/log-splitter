@@ -1,4 +1,5 @@
 {
   "extends": ["config:base"],
-  "recreateClosed": true
+  "recreateClosed": true,
+  "masterIssue": true
 }
