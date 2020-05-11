@@ -5,7 +5,7 @@ const fs = require("fs");
  * Parse a file and return an object
  * @param {String} rawPath The path of the file to parse
  */
-const parseFile = rawPath => {
+const parseFile = (rawPath) => {
   let fileByLine = [];
   try {
     // Normalize path

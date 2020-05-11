@@ -15,13 +15,13 @@ const modalDialog = (window, type) => {
       case "open":
         path = dialog.showOpenDialogSync(window, {
           title: "Ouvrir le fichier à traiter",
-          properties: ["openFile"]
+          properties: ["openFile"],
         });
         break;
       case "save":
         path = dialog.showOpenDialogSync(window, {
           title: "Choisir le dossier dans lequel écrire les fichiers",
-          properties: ["openDirectory"]
+          properties: ["openDirectory"],
         });
         break;
       default:

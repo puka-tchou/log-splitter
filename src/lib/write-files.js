@@ -11,14 +11,14 @@ const path = require("path");
 const writeFiles = (name, folder, files) => {
   let index = 1;
 
-  files.forEach(file => {
+  files.forEach((file) => {
     const fileName = path.join(folder, `${name}_${index.toString()}`);
     // eslint-disable-next-line no-plusplus
     index++;
     // Open a stream
     const stream = fs.createWriteStream(fileName, { flags: "a" });
     // Append to the file
-    file.forEach(line => {
+    file.forEach((line) => {
       stream.write(`${line}\n`);
     });
     // Close the stream

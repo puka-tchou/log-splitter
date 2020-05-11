@@ -13,13 +13,13 @@ const { displayProgress } = require("./lib/display-progress");
  * Core app logic
  * @param {Electron.BrowserWindow} mainWindow
  */
-const main = mainWindow => {
+const main = (mainWindow) => {
   let selectedFile = [];
   let files = [];
   let folder;
 
   // Listen to ipc.send in index.html
-  ipcMain.on("choose-file", event => {
+  ipcMain.on("choose-file", (event) => {
     // Start dialog handler
     selectedFile = modalDialog(mainWindow, "open");
     if (typeof selectedFile !== "undefined") {
@@ -51,7 +51,7 @@ const main = mainWindow => {
     event.returnValue = true;
   });
 
-  ipcMain.on("choose-folder", event => {
+  ipcMain.on("choose-folder", (event) => {
     // Ask where to save the files
     folder = modalDialog(mainWindow, "save");
     // Display that the folder is OK
@@ -61,7 +61,7 @@ const main = mainWindow => {
     event.returnValue = true;
   });
 
-  ipcMain.on("save-file", event => {
+  ipcMain.on("save-file", (event) => {
     if (typeof folder !== "undefined") {
       // Display the progress
       displayProgress(
@@ -82,9 +82,7 @@ const main = mainWindow => {
       displayProgress(
         mainWindow,
         "process-info",
-        `${
-          files.length
-        } fichiers ont été enregistrés avec succès dans le dossier ${folder[0]}`
+        `${files.length} fichiers ont été enregistrés avec succès dans le dossier ${folder[0]}`
       );
       // Indicate that the process is done
       displayProgress(mainWindow, "process-info-card", "Processing is done");

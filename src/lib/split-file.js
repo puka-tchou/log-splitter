@@ -3,7 +3,7 @@
  * @param {Array} file An array containing each line of the original file
  * @returns {Array} An array of array
  */
-const splitFile = file => {
+const splitFile = (file) => {
   const regex = /(?:^|\W)ffmpeg init(?:$|\W)/gm;
   const files = [];
 
@@ -11,7 +11,7 @@ const splitFile = file => {
   let endIndex = 0;
   do {
     // Find the endIndex (the line where "ffmpeg init" is written)
-    endIndex = processedFile.findIndex(line => {
+    endIndex = processedFile.findIndex((line) => {
       return regex.test(line);
     });
     // Slice the original array from start (included) to end (not included)

@@ -67,7 +67,7 @@ const activateStartButton = () => {
     // Enable start button
     startButton.disabled = false;
     // Listen to "click" event on goButton
-    startButton.addEventListener("click", event => {
+    startButton.addEventListener("click", (event) => {
       console.log(processStatus);
       switch (processStatus) {
         case "ready":
@@ -94,7 +94,7 @@ const activateStartButton = () => {
 };
 
 // Listen to "click" event on file selection
-selectFile.addEventListener("click", event => {
+selectFile.addEventListener("click", (event) => {
   // Reset state
   fileCard.classList.remove("valid");
   // Send the data to the main process
@@ -110,7 +110,7 @@ selectFile.addEventListener("click", event => {
 });
 
 // Listen to "click" event on folder selection
-selectFolder.addEventListener("click", event => {
+selectFolder.addEventListener("click", (event) => {
   // Reset state
   folderCard.classList.remove("valid");
   // Send event
