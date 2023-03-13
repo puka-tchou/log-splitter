@@ -49,13 +49,13 @@
     "electron-squirrel-startup": "1.0.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "6.0.4",
-    "@electron-forge/maker-deb": "6.0.4",
-    "@electron-forge/maker-rpm": "6.0.4",
-    "@electron-forge/maker-squirrel": "6.0.4",
-    "@electron-forge/maker-zip": "6.0.4",
+    "@electron-forge/cli": "6.0.5",
+    "@electron-forge/maker-deb": "6.0.5",
+    "@electron-forge/maker-rpm": "6.0.5",
+    "@electron-forge/maker-squirrel": "6.0.5",
+    "@electron-forge/maker-zip": "6.0.5",
     "conventional-changelog-cli": "2.2.2",
-    "electron": "22.2.0",
+    "electron": "23.1.1",
     "standard-version": "9.5.0",
     "xo": "0.53.1"
   },
