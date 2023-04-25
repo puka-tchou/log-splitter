@@ -57,7 +57,7 @@
     "conventional-changelog-cli": "2.2.2",
     "electron": "23.2.0",
     "standard-version": "9.5.0",
-    "xo": "0.53.1"
+    "xo": "0.54.1"
   },
   "productName": "log-splitter"
 }
