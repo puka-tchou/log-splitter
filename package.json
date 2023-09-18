@@ -55,7 +55,7 @@
     "@electron-forge/maker-squirrel": "6.1.1",
     "@electron-forge/maker-zip": "6.1.1",
     "conventional-changelog-cli": "2.2.2",
-    "electron": "24.7.1",
+    "electron": "24.8.3",
     "standard-version": "9.5.0",
     "xo": "0.54.2"
   },
